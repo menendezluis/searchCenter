@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Error from './Error';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const Formulario = ({guardarBusqueda}) => {
     const {parametroRuta} = useParams();
     const [termino, guardarTermino] = useState('');
     const [error, guardarError] = useState(false);
-
-    if (parametroRuta !== '') {
-        guardarBusqueda(parametroRuta);
-       }
        
     const buscar = e => {
          e.preventDefault();
@@ -24,7 +20,9 @@ const Formulario = ({guardarBusqueda}) => {
     
     }
     
-   
+    if (parametroRuta !== '') {
+        guardarBusqueda(parametroRuta);
+       }
     
     //enviar el termino de busqueda hacia el componente principal
     return(
@@ -42,10 +40,11 @@ const Formulario = ({guardarBusqueda}) => {
                      />
                 </div>
                 <div className="form-group col-md-4">
+                    <Link to={`/buscar/${termino}`}>
                     <input type="submit"
                     className="btn btn-lg btn-danger btn-black"
                     value="Buscar"
-                     />
+                     /></Link>
                 </div>
             </div>
             { error ? <Error mensaje="Agrega un término de búsqueda" /> : null }

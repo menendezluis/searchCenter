@@ -27,6 +27,7 @@ export default function App() {
       const key = '20078252-fc3369c3a9adbb3bf23221313';
       const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&per_page=${imagenesPorPagina}
       &page=${paginaActual}`;  
+      console.log(url);
       //api busqueda de series
       const url2 = `http://api.tvmaze.com/search/shows?q=${busqueda}`;  
       //api busqueda de personas
@@ -76,7 +77,7 @@ export default function App() {
 
     guardarPaginaActual(nuevaPaginaActual);
   }
-
+  
   return (
     <div className="container">
       
@@ -111,7 +112,7 @@ export default function App() {
                     Siguiente &raquo;
                   </button>}
       </div>
-        
+      
     </div>
   );
 }

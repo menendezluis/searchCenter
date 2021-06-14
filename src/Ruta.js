@@ -12,10 +12,10 @@ export default function Ruta(){
     <Router>
     
     <Switch>
-          <Route path="/buscar/:parametroRuta">
+          <Route path="/buscar/:parametroRuta" exact>
           <App />
           </Route>
-          <Route path="/" exact>
+          <Route path="/">
           <App />
           </Route>
         </Switch>
