@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Ruta from './Ruta';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Ruta />
   </React.StrictMode>,
   document.getElementById('root')
 );

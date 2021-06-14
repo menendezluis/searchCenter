@@ -6,8 +6,10 @@ import ListadoSeries from './components/ListadoSeries';
 import ListadoPersonas from './components/ListadoPersonas';
 
 
-function App() {
+
+export default function App() {
 //state de la app
+  
   const [ busqueda, guardarBusqueda ] = useState('');
   const [ imagenes, guardarImagenes ] = useState([]);
   const [ series, guardarSeries ] = useState([]);
@@ -16,7 +18,7 @@ function App() {
 
   const [ paginaActual, guardarPaginaActual ] = useState(1);
   const [ totalPaginas, guardarTotalPaginas] = useState(1);
-
+   
   useEffect(() => {
     const consultarApi = async () => {
       if(busqueda === '' ) return;
@@ -28,7 +30,8 @@ function App() {
       //api busqueda de series
       const url2 = `http://api.tvmaze.com/search/shows?q=${busqueda}`;  
       //api busqueda de personas
-      const url3 = `http://api.tvmaze.com/search/people?q=${busqueda}`;  
+      const url3 = `http://api.tvmaze.com/search/people?q=${busqueda}`; 
+      //api Soap 
       //const url4 = `http://www.crcind.com/csp/samples/SOAP.Demo.cls?soap_method=GetListByName&name=${busqueda}`;
 
       const respuesta = await fetch(url);
@@ -80,7 +83,7 @@ function App() {
       <div className="jumbotron">
         <p className="lead text-center">Buscador de contenido</p> 
         <Formulario 
-        guardarBusqueda={guardarBusqueda}/>
+        guardarBusqueda={guardarBusqueda} />
       </div>
       <div className="row justify-content-center">
       <ListadoSeries series={series}/>
@@ -112,5 +115,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

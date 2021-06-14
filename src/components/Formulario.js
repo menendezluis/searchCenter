@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import Error from './Error';
+import { useParams } from 'react-router-dom';
 
 const Formulario = ({guardarBusqueda}) => {
-
+    const {parametroRuta} = useParams();
     const [termino, guardarTermino] = useState('');
     const [error, guardarError] = useState(false);
-    
+
+    if (parametroRuta !== '') {
+        guardarBusqueda(parametroRuta);
+       }
+       
     const buscar = e => {
-        e.preventDefault();
+         e.preventDefault();
     
     //validar
     if(termino.trim() === ''){
@@ -18,6 +23,9 @@ const Formulario = ({guardarBusqueda}) => {
     guardarBusqueda(termino);
     
     }
+    
+   
+    
     //enviar el termino de busqueda hacia el componente principal
     return(
         <div>
