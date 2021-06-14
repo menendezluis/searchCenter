@@ -4,12 +4,12 @@ const Serie = ({serie}) => {
     //extraer serie
 
     const { name, image, premiered,officialSite} = serie.show;
-    console.log(typeof(image));
+
     let photo = image;
     if (photo === null) {
         photo = ["https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png","0"];
     }
-    console.log(photo);
+  
        const foto = Object.values(photo);
 
     return ( 

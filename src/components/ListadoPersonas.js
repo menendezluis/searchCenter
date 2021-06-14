@@ -4,7 +4,7 @@ import Personas from './Persona';
 const ListadoPersona = ({personas}) => {
 
     return(
-        <div><h1 align="center">{personas ? 'Personas' : ''}</h1> 
+        <div><h1 align="center">Personas</h1> 
         <div className="col-12 p-5 row">
             {personas.map(persona => (
                 <Personas 

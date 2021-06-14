@@ -4,7 +4,7 @@ const Persona = ({persona}) => {
     //extraer serie
 
     const { name, image, gender,url} = persona.person;
-    console.log(typeof(image));
+  
     let photo = image;
     if (photo === null) {
         photo = ["https://www.searchpng.com/wp-content/uploads/2019/02/Profile-PNG-Icon-715x715.png","0"];

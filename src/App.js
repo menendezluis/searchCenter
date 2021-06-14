@@ -4,6 +4,7 @@ import Formulario from './components/Formulario';
 import ListadoImagenes from './components/ListadoImagenes';
 import ListadoSeries from './components/ListadoSeries';
 import ListadoPersonas from './components/ListadoPersonas';
+import ListadoCanciones from './components/ListadoCanciones';
 
 
 
@@ -14,7 +15,7 @@ export default function App() {
   const [ imagenes, guardarImagenes ] = useState([]);
   const [ series, guardarSeries ] = useState([]);
   const [ personas, guardarPersonas ] = useState([]);
- // const [ personas2, guardarPersonas2 ] = useState([]);
+  const [ canciones, guardarCanciones ] = useState([]);
 
   const [ paginaActual, guardarPaginaActual ] = useState(1);
   const [ totalPaginas, guardarTotalPaginas] = useState(1);
@@ -27,29 +28,33 @@ export default function App() {
       const key = '20078252-fc3369c3a9adbb3bf23221313';
       const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&per_page=${imagenesPorPagina}
       &page=${paginaActual}`;  
-      console.log(url);
+      
       //api busqueda de series
       const url2 = `http://api.tvmaze.com/search/shows?q=${busqueda}`;  
       //api busqueda de personas
       const url3 = `http://api.tvmaze.com/search/people?q=${busqueda}`; 
       //api Soap 
-      //const url4 = `http://www.crcind.com/csp/samples/SOAP.Demo.cls?soap_method=GetListByName&name=${busqueda}`;
+      const url4 = `https://itunes.apple.com/search?term=song+${busqueda}`;
 
       const respuesta = await fetch(url);
       const respuesta2 = await fetch(url2);
       const respuesta3 = await fetch(url3);
-      //const respuesta4 = await fetch(url4);
+      const respuesta4 = await fetch(url4);
       
       const resultado = await respuesta.json();
  
       const resultado2 = await respuesta2.json();
       const resultado3 = await respuesta3.json();
-      //const resultado4 = await respuesta4.json();
+      const resultado4 = await respuesta4.json();
+      
       guardarImagenes(resultado.hits);
-      guardarSeries(resultado2)
-      guardarPersonas(resultado3)
+      guardarSeries(resultado2);
+      guardarPersonas(resultado3);
+      guardarCanciones(resultado4.results);
 
-      const calcularTotalPaginas = Math.ceil(resultado.totalHits / imagenesPorPagina);
+      console.log(resultado4.results);
+      console.log(resultado.hits);
+     const calcularTotalPaginas = Math.ceil(resultado.totalHits / imagenesPorPagina);
       guardarTotalPaginas(calcularTotalPaginas);
 
       const jumbotron = document.querySelector('.jumbotron');
@@ -86,9 +91,11 @@ export default function App() {
         <Formulario 
         guardarBusqueda={guardarBusqueda} />
       </div>
+      
       <div className="row justify-content-center">
       <ListadoSeries series={series}/>
       </div>
+      
       <div className="row justify-content-center">
       <ListadoPersonas personas={personas}/>
       </div>
