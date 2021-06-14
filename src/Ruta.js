@@ -5,7 +5,8 @@ import {
   Route
 } from "react-router-dom";
 
-import App from './App'
+import App from './App';
+//import ApiSearch from './ApiSearch';
 
 export default function Ruta(){
   return( 
@@ -15,7 +16,8 @@ export default function Ruta(){
           <Route path="/buscar/:parametroRuta" exact>
           <App />
           </Route>
-          <Route path="/">
+          
+          <Route path="/" exact>
           <App />
           </Route>
         </Switch>

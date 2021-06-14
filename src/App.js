@@ -52,8 +52,6 @@ export default function App() {
       guardarPersonas(resultado3);
       guardarCanciones(resultado4.results);
 
-      console.log(resultado4.results);
-      console.log(resultado.hits);
      const calcularTotalPaginas = Math.ceil(resultado.totalHits / imagenesPorPagina);
       guardarTotalPaginas(calcularTotalPaginas);
 
